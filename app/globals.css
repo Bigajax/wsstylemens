@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ————— Tokens WS Style Men's ————— */
+@theme {
+  --color-ink: #080808;
+  --color-ink2: #141414;
+  --color-graphite: #242424;
+  --color-gold: #c9a44c;
+  --color-goldbright: #e0b529;
+  --color-sand: #d8ccbb;
+  --color-offwhite: #f3f0e9;
+  --color-mist: #e4e4e1;
+  --color-coffee: #4a3428;
+
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-inter);
+  --font-tag: var(--font-barlow);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-offwhite);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* ————— Tipografia ————— */
+
+/* Título display: Archivo expandida, pesada, caixa alta */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 118%;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+/* Eyebrow / dado de etiqueta: Barlow Condensed */
+.tag-data {
+  font-family: var(--font-tag);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* ————— Assinatura: trilho de arara ————— */
+/* Linha dourada contínua com "ganchos" — as seções de vitrine penduram nela */
+.rail {
+  position: relative;
+  border-top: 1px solid var(--color-gold);
+}
+.rail::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-gold) 0,
+    var(--color-gold) 1px,
+    transparent 1px,
+    transparent 96px
+  );
+  pointer-events: none;
+}
+
+/* ————— Assinatura: etiqueta de cabide ————— */
+/* Badge em forma de tag de roupa: furo perfurado + fio */
+.hang-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem 0.3rem 1.1rem;
+  font-family: var(--font-tag);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  clip-path: polygon(0.55rem 0, 100% 0, 100% 100%, 0.55rem 100%, 0 50%);
+}
+.hang-tag::before {
+  content: "";
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hang-tag--gold {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+.hang-tag--gold::before {
+  background: var(--color-ink);
+}
+.hang-tag--ink {
+  background: var(--color-ink);
+  color: var(--color-gold);
+}
+.hang-tag--ink::before {
+  background: var(--color-gold);
+}
+.hang-tag--outline {
+  background: var(--color-offwhite);
+  color: var(--color-coffee);
+  outline: 1px solid var(--color-gold);
+  outline-offset: -1px;
+}
+.hang-tag--outline::before {
+  background: var(--color-gold);
+}
+
+/* ————— Revelação no scroll ————— */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ————— Foco visível ————— */
+:focus-visible {
+  outline: 2px solid var(--color-goldbright);
+  outline-offset: 2px;
+}
+
+/* ————— Scrollbar discreta nos carrosséis ————— */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Zoom suave de imagem nos cards */
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+@media (hover: hover) {
+  .img-zoom:hover img {
+    transform: scale(1.045);
+  }
+}

@@ -125,7 +125,19 @@ export default function Footer() {
             © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.address.city}/
             {siteConfig.address.state}. Todos os direitos reservados.
           </p>
-          <p>Vitrine digital — atendimento pelo WhatsApp.</p>
+          <div className="sm:text-right">
+            <p>Vitrine digital — atendimento pelo WhatsApp.</p>
+            <p className="mt-1">
+              <a
+                href="https://rafaelrazeira.com.br/vitrine-digital"
+                target="_blank"
+                rel="noopener"
+                className="hover:text-goldbright transition-colors"
+              >
+                vitrine por Rafael Razeira Estúdio
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

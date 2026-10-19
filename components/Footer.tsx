@@ -121,12 +121,11 @@ export default function Footer() {
         )}
 
         <div className="mt-10 pt-6 border-t border-graphite flex flex-col sm:flex-row justify-between gap-2 text-xs text-sand/60">
-          <p>
-            © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.address.city}/
-            {siteConfig.address.state}. Todos os direitos reservados.
-          </p>
-          <div className="sm:text-right">
-            <p>Vitrine digital — atendimento pelo WhatsApp.</p>
+          <div>
+            <p>
+              © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.address.city}/
+              {siteConfig.address.state}. Todos os direitos reservados.
+            </p>
             <p className="mt-1">
               <a
                 href="https://rafaelrazeira.com.br/vitrine-digital"
@@ -138,6 +137,7 @@ export default function Footer() {
               </a>
             </p>
           </div>
+          <p>Vitrine digital — atendimento pelo WhatsApp.</p>
         </div>
       </div>
     </footer>
